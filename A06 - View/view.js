@@ -37,12 +37,23 @@ function view() {
 	console.log(A1);
 			   
 	// Make a Look-In-Direction matrix centered at (0,-1,-5), angled 170 degrees, with an elevation of 15 degrees, and a roll of 45 degrees.
-	var A2 =  [
-		-0.6645844181465339, 0.6830127018922193, -0.30302013169214265, -0.832087956568494, 
-		0.7281440624935039, 0.6830127018922194, -0.0574445237541965, 0.3957900831212369, 
-		0.16773125949652096, -0.25881904510252074, -0.9512512425641977, -5.01507525792351, 
-		0.0, 0.0, 0.0, 1.0
-		];
+	// var A2 =  [
+	// 	-0.6645844181465339, 0.6830127018922193, -0.30302013169214265, -0.832087956568494, 
+	// 	0.7281440624935039, 0.6830127018922194, -0.0574445237541965, 0.3957900831212369, 
+	// 	0.16773125949652096, -0.25881904510252074, -0.9512512425641977, -5.01507525792351, 
+	// 	0.0, 0.0, 0.0, 1.0
+	// 	];
+	
+
+	var A2 = utils.multiplyMatrices(
+			utils.multiplyMatrices(
+				utils.multiplyMatrices(
+					utils.MakeRotateZMatrix(-45),
+					utils.MakeRotateXMatrix(-15)),
+					utils.MakeRotateYMatrix(-170)),
+					utils.MakeTranslateMatrix(0,1,5));
+		
+		console.log(A2);
 			   
 	// Make a Look-At-Matrix, centered at (-4, 2, -4), aiming at (0,0.5,0.5) and with up-vector (0,1,0).
 		// var A3 =  [
