@@ -73,7 +73,7 @@ function updateWorld(rvx, rvy, rvz) {
 	
 	var rot = y_deltaQ.mul(x_deltaQ).mul(z_deltaQ).mul(x_wing_orientation);
 	x_wing_orientation = y_deltaQ.mul(x_deltaQ).mul(z_deltaQ).mul(x_wing_orientation);
-	
+
 	return rot.toMatrix4();
 }
 

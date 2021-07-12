@@ -16,6 +16,9 @@ function updateWorld(rvx, rvy, rvz) {
 	Yaw = Yaw + rvy;
 	Roll = Roll + rvz;
 	var out = utils.MakeWorld(0,0,0, Yaw, Pitch, Roll, 1);
+	Pitch = 0;
+	Yaw = 0;
+	Roll = 0;
 
 	return out;
 }

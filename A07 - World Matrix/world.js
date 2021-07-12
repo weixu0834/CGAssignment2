@@ -1,19 +1,39 @@
 function world() {
 	// Positioned in 0,0,-3. Yaw=90, Pitch and Roll = 0
-	var A1 =  [
-		6.123233995736766e-17, 0.0, 1.0, 0.0, 
-		0.0, 1.0, 0.0, 0.0, 
-		-1.0, 0.0, 6.123233995736766e-17, -3.0, 
-		0.0, 0.0, 0.0, 1.0
-		];
+	// var A1 =  [
+	// 	6.123233995736766e-17, 0.0, 1.0, 0.0, 
+	// 	0.0, 1.0, 0.0, 0.0, 
+	// 	-1.0, 0.0, 6.123233995736766e-17, -3.0, 
+	// 	0.0, 0.0, 0.0, 1.0
+	// 	];
+
+	var A1 = [1,0,0,0,
+			0,1,0,0,
+			0,0,1,0,
+			0,0,0,1];
+	A1 = utils.multiplyMatrices(utils.MakeTranslateMatrix(0,0,-3),utils.MakeRotateYMatrix(90));
+	console.log(A1);
 			   
 	// Positioned in 0,2,0. Yaw=0, Pitch = 60, Roll = 0, 1/10th of size
-	var A2 =  [
-		0.1, 0.0, 0.0, 0.0, 
-		0.0, 0.05000000000000002, -0.08660254037844387, 2.0, 
-		0.0, 0.08660254037844387, 0.05000000000000002, 0.0, 
-		0.0, 0.0, 0.0, 1.0 
-		];
+	// var A2 =  [
+	// 	0.1, 0.0, 0.0, 0.0, 
+	// 	0.0, 0.05000000000000002, -0.08660254037844387, 2.0, 
+	// 	0.0, 0.08660254037844387, 0.05000000000000002, 0.0, 
+	// 	0.0, 0.0, 0.0, 1.0 
+	// 	];
+
+	var A2 = [1,0,0,0,
+		0,1,0,0,
+		0,0,1,0,
+		0,0,0,1];
+	
+	A2 = utils.multiplyMatrices(utils.multiplyMatrices(utils.MakeTranslateMatrix(0,2,0),
+		 utils.MakeRotateXMatrix(60)),
+		 utils.MakeScaleMatrix(1/10));
+	
+	console.log(A2);
+		
+		
 			   
 	// Positioned in 0,0,0. Yaw=30, Pitch = 0 Roll = 45
 	var A3 =  [
