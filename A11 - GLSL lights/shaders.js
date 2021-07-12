@@ -96,11 +96,10 @@ var S7 = `
 	OlightDir = normalize(Pos - fs_pos);
 	OlightColor = lightColor * pow(Target / length(Pos - fs_pos), Decay) * clamp((CosAngle - CosOut) / (CosIn - CosOut), 0.0, 1.0);
 
-	const mat4 McInv = mat4(vec4(0.25,0.0,-0.25,0.7071),vec4(0.25,0.6124,-0.25,-0.3536),vec4(0.25,-0.6124,-0.25,-0.3536),vec4(0.25,0.0,0.75,0.0));
-	mat4 InCols = transpose(mat4(ambientLightLowColor, SHRightLightColor, SHLeftLightColor, ambientLightColor));
-	mat4 OutCols = McInv * InCols;
-	vec4 ambientSH = vec4((vec4(1,normalVec) * OutCols).rgb, 1.0);
-	ambientColor = ambientSH;
+	ambientColor = SHconstColor + 
+			normalVec[0] * SHDeltaLxColor + 
+			normalVec[1] * SHDeltaLyColor +
+			normalVec[2] * SHDeltaLzColor;
 
 `;
 	return [S1, S2, S3, S4, S5, S6, S7];
